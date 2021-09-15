@@ -105,9 +105,9 @@ def Fishing(getFish,windowSize):
     pyautogui.click(getFish[1][0],getFish[1][1])
 
 def FixRod():
-    for i in range (0,len(fixRod),2):
+    for i in range (0,len(fixRod)):
         pyautogui.click(fixRod[i][0],fixRod[i][1])
-        time.sleep(0.5)
+        time.sleep(1)
 
 while True:
     check = checkFish(windowSize)
@@ -122,9 +122,11 @@ while True:
                     print("detected")
                     Fishing(getFish,windowSize)
                     break
-                if pyautogui.locateOnScreen("detected3.png",region=(windowSize[0],windowSize[1],windowSize[2],round(windowSize[3]/2)),grayscale=True, confidence=0.8) != None or pyautogui.locateOnScreen("detected6.png",region=(windowSize[0],windowSize[1],windowSize[2],round(windowSize[3]/2)),grayscale=True, confidence=0.8) != None or  pyautogui.locateOnScreen("detected5.png",region=(windowSize[0],windowSize[1],windowSize[2],round(windowSize[3]/2)),grayscale=True, confidence=0.8) != None: 
+                elif  pyautogui.locateOnScreen("detected6.png",region=(windowSize[0],windowSize[1],windowSize[2],windowSize[3]),grayscale=True, confidence=0.5) != None : 
+                    print("soon1")
                     pyautogui.click(getFish[1][0],getFish[1][1])
                     break
+                
     if pyautogui.locateOnScreen("detected4.png",region=(windowSize[0],windowSize[1],windowSize[2],windowSize[3]),grayscale=True, confidence=0.5) != None : 
         print("fixRod")
         FixRod()
